@@ -1,3 +1,14 @@
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBFqA6ulx2RURKeOTz0vHuKlOmeMG609xc",
+    authDomain: "comp4711quiz.firebaseapp.com",
+    databaseURL: "https://comp4711quiz.firebaseio.com",
+    projectId: "comp4711quiz",
+    storageBucket: "comp4711quiz.appspot.com",
+    messagingSenderId: "866397329005"
+};
+firebase.initializeApp(config);
+
 // Get a reference to the database service
 var database = firebase.database();
 
@@ -123,6 +134,10 @@ const loadAdmin = () => {
 
 const loadUser = () => {
     window.location.replace("user.html");
+}
+
+const loadSelection = () => {
+    window.location.replace("selection.html");
 }
 
 const logOutUser = () => {

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Quiz Maker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body onload="loadPage()">
+    <div>
+        <h1>Quiz Maker</h1>
+    </div>
+    <br />
+    <div id="quizContainer">
+    </div>
+    <div>
+        <h3 id="warningMsg">Please make sure all answers have been filled and selected for each question</h3>
+        <h3 id="successMsg">Quiz has been saved!</h3>
+    </div>
+    <div>
+        <button class="addQuestion btn-primary" onclick="addQuestion()">New Question</button>
+        <button class="saveQuiz btn-success" onclick="saveQuiz()">Save Quiz</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBFqA6ulx2RURKeOTz0vHuKlOmeMG609xc",
+            authDomain: "comp4711quiz.firebaseapp.com",
+            databaseURL: "https://comp4711quiz.firebaseio.com",
+            projectId: "comp4711quiz",
+            storageBucket: "comp4711quiz.appspot.com",
+            messagingSenderId: "866397329005"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="Model/QuizModel.js"></script>
+    <script src="View/QuizView.js"></script>
+    <script src="Controller/QuizController.js"></script>
+</body>
+
+</html>

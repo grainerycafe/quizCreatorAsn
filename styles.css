@@ -1,0 +1,41 @@
+#quizContainer {
+    margin: 20px;
+}
+
+textarea {
+    resize: none;
+    border: 1px solid black;
+}
+
+#mcChoice {
+    margin-top: 10px;
+}
+
+input[type=text] {
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+input[type=radio] {
+    margin-top: 15px;
+}
+
+button {
+    margin-top: 20px;
+}
+
+#quizTakerContainer {
+    margin: 20px;
+}
+
+body {
+    margin: 20px;
+}
+
+p {
+    margin: 9px;
+}
+
+#choiceContainer {
+    padding-left: 10px;
+}

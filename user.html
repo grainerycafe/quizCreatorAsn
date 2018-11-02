@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Quiz Taker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body onload="loadQuiz()">
+    <div>
+        <h1>Quiz Taker</h1>
+    </div>
+    <br />
+    <div id="quizTakerContainer">
+    </div>
+    <div>
+        <h2 id="userScore"></h2>
+        <h2 id="quizNotFound">Error404: Quiz Not Found</h2>
+        <button id="easyBtn" class="checkAnswers btn-info" onclick="getQuiz('hard')">Hard Quiz</button>
+        <button id="hardBtn" class="checkAnswers btn-info" onclick="getQuiz('easy')">Easy Quiz</button>
+        <button id="markerBtn" class="checkAnswers btn-info" onclick="checkAnswers()">Check Answers</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBFqA6ulx2RURKeOTz0vHuKlOmeMG609xc",
+            authDomain: "comp4711quiz.firebaseapp.com",
+            databaseURL: "https://comp4711quiz.firebaseio.com",
+            projectId: "comp4711quiz",
+            storageBucket: "comp4711quiz.appspot.com",
+            messagingSenderId: "866397329005"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="Model/QuizModel.js"></script>
+    <script src="View/QuizView.js"></script>
+    <script src="Controller/QuizController.js"></script>
+</body>
+
+</html>

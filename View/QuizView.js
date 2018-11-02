@@ -115,6 +115,7 @@ const updateQuizModel = (quizData) => {
 
 //load quiz taker
 const loadQuiz = () => {
+    quizSaved = true;
     $('#hardBtn').show();
     $('#easyBtn').show();
     $('#markerBtn').hide();
@@ -123,6 +124,7 @@ const loadQuiz = () => {
 
 //load quiz maker
 const loadPage = () => {
+    quizSaved = false;
     $('#warningMsg').hide();
     $('#successMsg').hide();
 }

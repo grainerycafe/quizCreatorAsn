@@ -97,23 +97,45 @@ $(window).on('beforeunload', () => {
 });
 
 const loadRegistration = () => {
-    window.location.replace("registration.html")
+    window.location.replace("registration.html");
 }
 
 const loadLogin = () => {
-    window.location.replace("index.html")
+    window.location.replace("index.html");
 }
 
 const registerUser = () => {
+    let username = $('#userName').val();
     let email = $('#userEmail').val();
     let password = $('#userPwd').val();
-    console.log(validatePwd(password));
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-    });
+    let signupSuccess = true;
+    if(username == "") {
+        $('#usernameWarning').html(usernameWarning);
+        signupSuccess = false;
+    } else {
+        $('#usernameWarning').html("");
+    }
+    if(!validateEmail(email)) {
+        $('#emailWarning').html(emailWarning);
+        signupSuccess = false;
+    } else {
+        $('#emailWarning').html("");
+    }
+    if(!validatePwd(password)) {
+        $('#pwdWarning').html(pwdWarning);
+        signupSuccess = false;
+    } else {
+        $('#pwdWarning').html("");
+    }
+    if (signupSuccess) {
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+        });
+        window.location.replace("index.html");
+    }  
 }
 
 const validateEmail = (email) => {

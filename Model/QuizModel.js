@@ -116,3 +116,28 @@ const restoreData = (savedList) => {
     $('#warningMsg').hide();
     $('#successMsg').hide();
 }
+
+const loadAdmin = () => {
+    window.location.replace("admin.html");
+}
+
+const loadUser = () => {
+    window.location.replace("user.html");
+}
+
+const logOutUser = () => {
+    firebase.auth().signOut().then(function() {
+        window.location.replace("index.html");
+        // Sign-out successful.
+      }, function(error) {
+        // An error happened.
+      });
+}
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        console.log(user.displayName);
+    } else {
+        window.location.replace("index.html");
+    }
+});

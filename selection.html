@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>InQuizition</title>
+    <title>InQuizition Selection</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,21 +12,14 @@
 
 <body>
     <div>
-        <h1>Welcome to InQuizition!</h1>
+        <h1>What would you like to do?</h1>
     </div>
     <br />
     <div id="quizContainer">
-        <div class="row">
-            <input id="userEmail" type="text" class="col-xs-12 col-md-4" placeholder="Email Address">
-        </div>
-        <div class="row">
-            <input id="userPwd" type="text" class="col-xs-12 col-md-4" placeholder="Password">
-            <p id="loginWarning" class="warning"></p>
-        </div>
-    </div>
-    <div id="loginBtns">
-        <button class="Login btn-success" onclick="loadInquizition()">Log In</button>
-        <button class="Register btn-primary" onclick="loadRegistration()">Sign Up</button>
+    <div id="selectionBtns">
+        <button class="makeQuiz btn-primary" onclick="loadAdmin()">Quiz Maker</button>
+        <button class="takeQuiz btn-success" onclick="loadUser()">Quiz Taker</button>
+        <button class="logout btn-danger" onclick="logOutUser()">Log Out</button>
     </div>
     <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
     <script>
@@ -42,7 +35,9 @@
         firebase.initializeApp(config);
     </script>
     <script src="Model/Messages.js"></script>
-    <script src="Controller/LoginController.js"></script>
+    <script src="Model/QuizModel.js"></script>
+    <script src="View/QuizView.js"></script>
+    <script src="Controller/QuizController.js"></script>
 </body>
 
 </html>

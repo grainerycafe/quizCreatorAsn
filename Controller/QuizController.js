@@ -95,26 +95,3 @@ $(window).on('beforeunload', () => {
         return "";
     }
 });
-
-const loadRegistration = () => {
-    window.location.replace("registration.html");
-}
-
-const loadLogin = () => {
-    window.location.replace("index.html");
-}
-
-const validateEmail = (email) => {
-    var re = /[\w]+@[\w]+\.[\w]{2,}/;
-    return re.test(String(email).toLowerCase());
-}
-
-const validatePwd = (pwd) => {
-    return (pwd.length > 5)
-}
-
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        console.log(user);
-    }
-});

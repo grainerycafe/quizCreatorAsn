@@ -1,47 +1,17 @@
-const registerUser = () => {
-    username = $('#userName').val();
+const loadInquizition = () => {
     let email = $('#userEmail').val();
     let password = $('#userPwd').val();
-    let signupSuccess = true;
-    if(username == "") {
-        $('#usernameWarning').html(usernameWarning);
-        signupSuccess = false;
-    } else {
-        $('#usernameWarning').html("");
-    }
-    if(!validateEmail(email)) {
-        $('#emailWarning').html(emailWarning);
-        signupSuccess = false;
-    } else {
-        $('#emailWarning').html("");
-    }
-    if(!validatePwd(password)) {
-        $('#pwdWarning').html(pwdWarning);
-        signupSuccess = false;
-    } else {
-        $('#pwdWarning').html("");
-    }
-    if (signupSuccess) {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ...
-        });
-    }  
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
+        window.location.replace("selection.html");
+    }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        $('#loginWarning').html(loginWarning);
+        // ...
+    });
 }
 
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        user.updateProfile({
-            displayName: username,
-        }).then(function () {
-            window.location.replace("admin.html");
-        }, function (error) {
-            // An error happened.
-        });
-   }
-   else{
-       console.log("User signed out");
-   }
-});
+const loadRegistration = () => {
+    window.location.replace("registration.html");
+}

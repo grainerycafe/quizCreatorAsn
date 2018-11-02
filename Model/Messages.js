@@ -7,3 +7,5 @@ var emailWarning = "*Email must be in format x@x.xx";
 var pwdWarning = "*Password must be at least 6 characters long";
 
 var usernameWarning = "*Please enter a username";
+
+var loginWarning = "*Username is invalid or password is incorrect";

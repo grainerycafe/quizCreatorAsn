@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Quiz Maker</title>
+    <title>InQuizition Registration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,20 +10,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
-<body onload="loadPage()">
+<body>
     <div>
-        <h1>Quiz Maker</h1>
+        <h1>Sign Up to InQuizition!</h1>
     </div>
     <br />
     <div id="quizContainer">
+        <div class="row">
+            <input id="userName" type="text" class="col-xs-12 col-md-4" placeholder="Username">
+        </div>
+        <div class="row">
+            <input id="userEmail" type="text" class="col-xs-12 col-md-4" placeholder="Email Address (example@example.com)">
+        </div>
+        <div class="row">
+            <input id="userPwd" type="password" class="col-xs-12 col-md-4" placeholder="Password">
+        </div>
     </div>
-    <div>
-        <h3 id="warningMsg"></h3>
-        <h3 id="successMsg"></h3>
-    </div>
-    <div>
-        <button class="addQuestion btn-primary" onclick="addQuestion()">New Question</button>
-        <button class="saveQuiz btn-success" onclick="saveQuiz()">Save Quiz</button>
+    <div id="loginBtns">
+        <button class="register btn-primary" onclick="registerUser()">Sign Up</button>
+        <button class="login btn-danger" onclick="loadLogin()">Cancel</button>
     </div>
     <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
     <script>

@@ -4,6 +4,7 @@ const addQuestion = () => {
     quizContainer.innerHTML += emptyQuestion;
     restoreData(savedList);
     qIdx++;
+    $('.saveQuiz').show();
     updateQuiz();
 }
 
@@ -79,7 +80,7 @@ const saveQuiz = () => {
         }
         quizSaved = true;
     } else {
-        displayMsg(count === qIdx);
+        displayMsg(false);
     }
 
 }
@@ -90,7 +91,36 @@ const checkAnswers = () => {
 }
 
 $(window).on('beforeunload', () => {
-    if (!quizSaved) {
+    if (!quizSaved && qIdx > 0) {
         return "";
     }
 });
+
+const loadRegistration = () => {
+    window.location.replace("registration.html")
+}
+
+const loadLogin = () => {
+    window.location.replace("index.html")
+}
+
+const registerUser = () => {
+    let email = $('#userEmail').val();
+    let password = $('#userPwd').val();
+    console.log(validatePwd(password));
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+    });
+}
+
+const validateEmail = (email) => {
+    var re = /[\w]+@[\w]+\.[\w]{2,}/;
+    return re.test(String(email).toLowerCase());
+}
+
+const validatePwd = (pwd) => {
+    return(pwd.length > 5)
+}

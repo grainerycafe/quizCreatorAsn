@@ -125,8 +125,11 @@ const loadQuiz = () => {
 //load quiz maker
 const loadPage = () => {
     quizSaved = false;
+    $('#warningMsg').html(warningMsg);
+    $('#successMsg').html(successMsg);
     $('#warningMsg').hide();
     $('#successMsg').hide();
+    $('.saveQuiz').hide();
 }
 
 //display save messages

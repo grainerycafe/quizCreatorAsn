@@ -2,6 +2,10 @@
     margin: 20px;
 }
 
+#loginBtns {
+    margin-left: 10px;
+}
+
 textarea {
     resize: none;
     border: 1px solid black;
@@ -12,6 +16,11 @@ textarea {
 }
 
 input[type=text] {
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+input[type=password] {
     margin-top: 10px;
     border: 1px solid black;
 }

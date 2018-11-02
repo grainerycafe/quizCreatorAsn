@@ -77,6 +77,7 @@ const saveQuiz = () => {
             let newPostHard = postHardData.push();
             newPostHard.set(questionListHard[i]);
         }
+        quizSaved = true;
     } else {
         displayMsg(count === qIdx);
     }
@@ -87,3 +88,9 @@ const saveQuiz = () => {
 const checkAnswers = () => {
     markAnswers();
 }
+
+$(window).on('beforeunload', () => {
+    if (!quizSaved) {
+        return "";
+    }
+});

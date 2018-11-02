@@ -19,6 +19,8 @@ var quiz = [];
 
 var quizAnswers = [];
 
+var quizSaved = false;
+
 //quiz getter for quiz taker
 const getQuiz = (difficulty) => {
     let quizData = database.ref(difficulty);

@@ -120,6 +120,7 @@ const loadQuiz = () => {
     $('#easyBtn').show();
     $('#markerBtn').hide();
     $('#quizNotFound').hide();
+    $('#rankingBtn').hide();
 }
 
 //load quiz maker

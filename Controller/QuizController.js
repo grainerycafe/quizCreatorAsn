@@ -71,16 +71,24 @@ const saveQuiz = () => {
         let postEasyData = database.ref("easy");
         for (let i = 0; i < questionListEasy.length; i++) {
             let newPostEasy = postEasyData.push();
-            newPostEasy.set(questionListEasy[i]).then(function() {
-                window.location.replace("selection.html");
-              });
+            if (i == questionListEasy.length - 1) {
+                newPostEasy.set(questionListEasy[i]).then(function () {
+                    window.location.replace("selection.html");
+                });
+            } else {
+                newPostEasy.set(questionListEasy[i])
+            }
         }
         let postHardData = database.ref("hard");
         for (let i = 0; i < questionListHard.length; i++) {
             let newPostHard = postHardData.push();
-            newPostHard.set(questionListHard[i]).then(function() {
-                window.location.replace("selection.html");
-              });
+            if (i == questionListEasy.length - 1) {
+                newPostHard.set(questionListHard[i]).then(function () {
+                    window.location.replace("selection.html");
+                });
+            } else {
+                newPostHard.set(questionListHard[i])
+            }
         }
         quizSaved = true;
     } else {

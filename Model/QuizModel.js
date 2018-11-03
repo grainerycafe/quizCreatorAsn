@@ -32,10 +32,16 @@ var quizAnswers = [];
 
 var quizSaved = false;
 
+var isEasy = -1;
+
 //quiz getter for quiz taker
 const getQuiz = (difficulty) => {
     let quizData = database.ref(difficulty);
-
+    if (difficulty === 'hard') {
+        isEasy = 0;
+    } else {
+        isEasy = 1;
+    }
     quizData.on('value', function (snapshot) {
         let count = 0;
         snapshot.forEach(function (childSnapshot) {
@@ -76,8 +82,24 @@ const markAnswers = () => {
         }
         scoreTotal++;
     }
-    doc.getElementById('userScore').innerHTML = userScore + " / " + scoreTotal;
+    let userPercent = Math.round((userScore / scoreTotal).toFixed(2) * 100);
+    console.log(userPercent + "%");
+    doc.getElementById('userScore').innerHTML = userPercent + "%";
     $('#userScore').show();
+    userID = firebase.auth().currentUser.uid;
+    if(isEasy === 0) {
+        let postUserScore = database.ref("hardscores");
+        let scoreObj = { score: userPercent };
+        postUserScore.child(userID).push();
+        postUserScore.child(userID).set(scoreObj);
+    } else if (isEasy === 1) {
+        let postUserScore = database.ref("easyscores");
+        let scoreObj = { score: userPercent };
+        postUserScore.child(userID).push();
+        postUserScore.child(userID).set(scoreObj);
+    }
+    $('#markerBtn').hide();
+    $('#rankingBtn').show();
 }
 
 //save input data in quiz maker
@@ -141,17 +163,17 @@ const loadSelection = () => {
 }
 
 const logOutUser = () => {
-    firebase.auth().signOut().then(function() {
+    firebase.auth().signOut().then(function () {
         window.location.replace("index.html");
         // Sign-out successful.
-      }, function(error) {
+    }, function (error) {
         // An error happened.
-      });
+    });
 }
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log(user.displayName);
+        console.log(user.email);
     } else {
         window.location.replace("index.html");
     }

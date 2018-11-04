@@ -86,15 +86,15 @@ const markAnswers = () => {
     console.log(userPercent + "%");
     doc.getElementById('userScore').innerHTML = userPercent + "%";
     $('#userScore').show();
-    userID = firebase.auth().currentUser.uid;
+    let userID = firebase.auth().currentUser.uid;
+    let username = firebase.auth().currentUser.displayName;
+    let scoreObj = { username: username, score: userPercent };
     if(isEasy === 0) {
         let postUserScore = database.ref("hardscores");
-        let scoreObj = { score: userPercent };
         postUserScore.child(userID).push();
         postUserScore.child(userID).set(scoreObj);
     } else if (isEasy === 1) {
         let postUserScore = database.ref("easyscores");
-        let scoreObj = { score: userPercent };
         postUserScore.child(userID).push();
         postUserScore.child(userID).set(scoreObj);
     }
@@ -160,6 +160,10 @@ const loadUser = () => {
 
 const loadSelection = () => {
     window.location.replace("selection.html");
+}
+
+const loadRankings = () => {
+    window.location.replace("rankings.html");
 }
 
 const logOutUser = () => {

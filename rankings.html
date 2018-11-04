@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Inquisition Rankings</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body onload="loadRankingsData()">
+    <div>
+        <h1>InQuizition Hard Leaderboard</h1>
+    </div>
+    <br />
+    <div id="hardRankContainer" class="col-md-12">
+        <table id="hardRankTable" class="col-md-6 col-xs-12">
+        </table>
+    </div>
+    <br />
+    <div id="easyRankHeader">
+        <h1>InQuizition Easy Leaderboard</h1>
+    </div>
+    <br />
+    <div id="easyRankContainer" class="col-md-12">
+        <table id="easyRankTable" class="col-md-6 col-xs-12">
+        </table>
+    </div>
+    <div>
+        <button class="loadSelection btn-info" onclick="loadSelection()">Home</button>
+        <button class="logout btn-danger" onclick="logOutUser()">Log Out</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script src="Model/RankModel.js"></script>
+    <script src="View/RankView.js"></script>
+    <script src="Controller/QuizController.js"></script>
+</body>
+
+</html>
